@@ -1,0 +1,96 @@
+<template>
+  <div class="stripe_container">
+    <div class="stripe">
+      <input type="text" placeholder="Country">
+      <div class="desc">
+        <button class="btn connect" @click="toPage('Stripe')">Connect with Stripe</button>
+        <div class="description">
+          <span class="text">Securely connect with your bank account.</span>
+          <span class="text">Payments will be made every 15th and 30th of the month.</span>
+        </div>
+      </div>
+    </div>
+    <button class="btn" @click="toPage('Stripe')">Next</button>
+  </div>
+</template>
+  
+<script>
+  export default {
+    name: "Creator",
+    data: () => ({
+
+    }), 
+    methods: {
+      toPage(page) {
+        this.$router.push({name: page})
+      }
+    },
+  }
+</script>
+<style scoped>
+.description {
+  padding-left: 7%;
+  display: flex;
+  font-size: 98%;
+  flex-direction: column;
+}
+.desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: start;
+  margin: auto;
+  width: 100%;
+  color: #000000;
+}
+.desc .btn {
+  width: 85%;
+  margin-bottom: 2%;
+}
+.stripe, .stripe button {
+  margin-top: 14%;
+}
+.stripe button {
+  margin-top: 14%;
+}
+.stripe_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 80%;
+  width: 88%;
+  margin-top: 1%;
+}
+.btn.connect {
+  background-color: transparent;
+  color: #000000;
+  font-weight: 400;
+  border: 1px solid #000000;
+  border-radius: 8px;
+}
+.btn {
+  color: #F5E0FF;
+  background-color: #181817;
+  padding: 5%;
+  font-size: 200%;
+  font-weight: 900;
+  border: 0px solid;
+  border-radius: 8px;
+  width: 80%;
+}
+  .stripe input {
+    border: 0px;
+    border-bottom: 1px solid gray;
+    font-family: 'Petrona';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 230%;
+    line-height: 33px;
+    color: #636363;
+    padding-left: 10px;
+    outline: none;
+    width: 100%;
+    background: transparent;
+  }
+</style>
