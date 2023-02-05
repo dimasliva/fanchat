@@ -1,13 +1,18 @@
 <template>
-  <div class="fields">
-    <input type="text" placeholder="Name">
-    <input type="text" class="input_email" placeholder="Email">
-    <input type="text" placeholder="Password">
-  </div>
-  <Policy/>
-  <div class="btns">
-    <button @click="register" class="btn signup">Sign up</button>
-    <button @click="toPage('SignIn')" class="btn signin">Log in</button>
+  <div class="auth_container">
+    <div class="title">Sign up</div>
+    <div class="fields">
+      <input type="text" placeholder="Name">
+      <input type="text" class="input_email" placeholder="Email">
+      <input type="text" placeholder="Password">
+      <div class="privacy_container">
+        <Policy/>
+      </div>
+    </div>
+    <div class="btns">
+      <button @click="register" class="btn signup">Sign up</button>
+      <button @click="toPage('SignIn')" class="btn signin">Log in</button>
+    </div>
   </div>
 </template>
   
@@ -18,7 +23,10 @@ import Policy from '@/components/Views/Auth/Components/Policy.vue';
     name: "SignUp",
     components: { Policy },
     data: () => ({
-      
+      window: {
+            width: 0,
+            height: 0
+        }
     }),
     methods: {
         toPage(page) {
@@ -28,13 +36,53 @@ import Policy from '@/components/Views/Auth/Components/Policy.vue';
         register() {
         },
     },
+    created() {
+      this.window.width = window.innerWidth;
+      this.window.height = window.innerHeight;
+    }
 }
 </script>
 <style scoped>
-@media (max-width: 428px) {
-  .fields .input_email {
-    margin: 20% 0px;
+@media (max-height: 700px) {
+  .auth_container {
+    padding-top: 10px !important;
   }
+  .auth_container .title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+  .fields .privacy_container {
+    margin-top: 0px;
+  }
+  .fields .input_email {
+    margin: 45px 0px;
+  }
+  .btns .btn {
+    width: 85%;
+    border-radius: 13px;
+    padding: 18px 0px;
+    font-size: 30px;
+    cursor: pointer;
+  }
+}
+.auth_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding-top: 10%;
+}
+.privacy_container {
+  margin-top: 10px;
+}
+.title {
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 43px;
+  text-align: center;
+  color: #383838;
+  margin-bottom: 20px;
 }
   .container {
     position: relative;
@@ -45,40 +93,25 @@ import Policy from '@/components/Views/Auth/Components/Policy.vue';
     height: 100%;
     padding: 3%;
   }
+  .fields {
+    display: flex;
+    flex-direction: column;
+  }
   .fields input {
     border: 0px;
     border-bottom: 1px solid #AFABAB;
-    font-family: 'Petrona';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 230%;
-    line-height: 33px;
-    color: #636363;
-    padding-left: 10px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 23px;
+    color: #858585;
+    padding-left: 15px;
+    padding-bottom: 10px;
     outline: none;
     width: 100%;
     background: transparent;
   }
   .input_email {
-    margin: 10% 0px;
-  }
-  .fields {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  .phone_bg {
-    background: #FFFFFF;
-    width: 100%;
-    height: 90%;
-    border-radius: 21px;
-    position: absolute;
-    padding: 5%;
-    padding-bottom: 15%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
+    margin: 60px 0px;
   }
   .phone {
     position: relative;
@@ -108,20 +141,20 @@ import Policy from '@/components/Views/Auth/Components/Policy.vue';
     margin-top: 20px;
   }
   .btn {
-    width: 85%;
+    width: 82%;
     border-radius: 13px;
-    font-weight: 700;
-    font-size: 250%;
-    padding: 5%  0px;
+    padding: 30px 0px;
     font-family: 'Petrona';
     font-style: normal;
-    font-weight: 800;
+    font-weight: 900;
+    font-size: 34px;
     cursor: pointer;
   }
   .btns {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    margin: 0px auto;
+    width: 96%;
   }
 </style>

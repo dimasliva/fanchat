@@ -16,9 +16,9 @@
       </div>
     </div>
     <div class="phone" v-if="window.width > 428"></div>
-    <div class="phone" v-else>
+    <div class="phone mobile" v-else>
       <div class="logo">
-        <img src="@/assets/logos/FanChat.svg"/>
+        <img src="@/assets/logos/FanChat.png"/>
       </div>
       <div class="desc">
         <span>Host Exclusive Video Chat</span>
@@ -61,6 +61,7 @@ export default {
 }
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap');
   @media (max-width: 1280px) {
     .landing .title {
       font-size: 60px;
@@ -89,20 +90,23 @@ export default {
       border-radius: 0px;
       margin-top: 0%;
       margin-right: 0%;
-      padding-bottom: 25%;
+      padding-bottom: 20%;
     }
     .phone .logo {
       width: 100%;
-      margin-bottom: 10%;
     }
     .phone .logo img{
-      width: 75%;
+      width: 100%;
     }
     .phone .desc {
+      font-family: 'Petrona';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 27px;
       text-align: center;
-      font-size: 240%;
-      line-height: 100%;
-      margin-bottom: 25%;
+      margin-bottom: 140px;
+      color: #181817;
     }
     .btns {
       display: flex;

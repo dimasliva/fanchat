@@ -43,7 +43,7 @@
   border-radius: 21px;
   position: absolute;
   padding: 5%;
-  padding-bottom: 15%;
+  padding-bottom: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,7 +53,7 @@
   position: relative;
   display: flex;
   align-items: flex-end;
-  width: 525px;
+  width: 605px;
   height: 99%;
   box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
   background-color: #F5E0FF;

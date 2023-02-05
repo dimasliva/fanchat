@@ -19,14 +19,15 @@
   }
 </script>
 <style scoped>
-@media (max-width: 428px) {
+@media (max-height: 700px) {
   .privacy .text{
-    font-size: 89%;
-    line-height: 110%;
+    font-size: 19px !important;
+    line-height: 21px !important;
   }
 }
 .text .terms {
   color: rgba(186, 77, 237, 1);
+  cursor: pointer;
 }
 
 .privacy {
@@ -35,11 +36,13 @@
   align-items: center;
   margin-top: 40px;
   margin-bottom: 50px;
+}
+.text{
   font-family: 'Petrona';
-  font-size: 150%;
+  font-style: normal;
   font-weight: 500;
-  line-height: 110%;
-  letter-spacing: 0em;
+  font-size: 28px;
+  line-height: 120%;
   text-align: center;
   color: #636363;
 }
