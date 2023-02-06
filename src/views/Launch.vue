@@ -23,6 +23,7 @@
       <div class="desc">
         <span>Host Exclusive Video Chat</span>
         <span>Sessions with your Fans </span>
+        <span style="position: absolute; bottom: 0px;">{{ window }}</span>
       </div>
       <div class="btns">
         <button @click="toPage('SignUp')" class="btn signup">Sign up</button>
