@@ -1,13 +1,13 @@
 <template>
     <div class="navbar">
-      <img @click="toPage('Home')" src="@/assets/profile/house.svg"/>
-      <img @click="toPage('Explore')" src="@/assets/profile/loop.svg"/>
+      <img @click="toPage('Home')" class="icons house" src="@/assets/profile/house.svg"/>
+      <img @click="toPage('Explore')" class="icons loop" src="@/assets/profile/loop.svg"/>
       <span class="plus">
         <img class="circle" src="@/assets/profile/plus.svg"/>
         <img class="cross" src="@/assets/profile/x.svg"/>
       </span>
-      <img @click="toPage('Message')" class="comment" src="@/assets/profile/comment.svg"/>
-      <img @click="toPage('Profile')" class="profile" src="@/assets/profile/profile.svg"/>
+      <img @click="toPage('Message')" class="icons comment" src="@/assets/profile/comment.svg"/>
+      <img @click="toPage('Profile')" class="icons profile" src="@/assets/profile/profile.svg"/>
     </div>
   </template>
   
@@ -23,37 +23,49 @@
   }
   </script>
   <style scoped>
+  @media (max-width: 414px) {
+    .plus .cross {
+      bottom: 27%;
+      left: 25%;
+    }
+  }
   .navbar {
     position: absolute;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     width: 80%;
-    height: 4%;
+    height: 6%;
     bottom: 3%;
   }
+  .icons {
+    height: 70%;
+  }
+  .house {
+    height: 65%;
+  }
+  .loop {
+  }
+  .comment {
+    height: 65%;
+  }
+  .profile {
+  }
   .navbar img, .plus img {
-    width:7%;
     cursor: pointer;
-  }
-  .navbar  .comment {
-    width: 8%;
-  }
-  .navbar .profile {
-    width: 6%;
   }
   .plus {
     position: relative;
+    height: 100%;
   }
-  .plus .cross {
-    width: 65%;
+  .cross {
+    height: 50%;
     position: absolute;
-    bottom: 16%;
-    left: 33%;
-    height: 80%;
+    bottom: 27%;
+    left: 27%;
   }
   .plus .circle {
-    width: 130%;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
   }
   </style>

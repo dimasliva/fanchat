@@ -53,7 +53,7 @@
   position: relative;
   display: flex;
   align-items: flex-end;
-  width: 605px;
+  width: 515px;
   height: 99%;
   box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
   background-color: #F5E0FF;

@@ -1,11 +1,13 @@
 <template>
   <div class="items">
     <div class="item" v-for="item in items" :key="item">
-      <img :src="require(`@/assets/profile/${item.img}`)">
-      <div class="info">
-        <span class="name">{{ item.name }}</span>
-        <span>@{{ item.tag }}</span>
-        <span class="confirmed">Confirmed Booking!</span>
+      <div class="info_container">
+        <img :src="require(`@/assets/profile/${item.img}`)">
+        <div class="info">
+          <span class="name">{{ item.name }}</span>
+          <span class="tag">@{{ item.tag }}</span>
+          <span class="confirmed">Confirmed Booking!</span>
+        </div>
       </div>
       <button class="btn">{{item.session}}</button>
     </div>
@@ -59,21 +61,24 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
+  height: var(--item-height);
+  padding-bottom: var(--item-padding);
 }
 .info .name {
-  font-family: 'Petrona';
   color: #000000;
   font-weight: 500;
-  font-size: 121%;
+  font-size: 17px;
   margin-bottom: 1%;
 }
+.info .tag {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
 .info .confirmed {
-  margin-top: 6%;
-  font-family: Petrona;
-  font-size: 84%;
   font-weight: 700;
-  text-align: left;
   color: #C867F7;
+  font-size: 13px;
+  text-align: left;
 }
 .items {
   display: flex;
@@ -86,15 +91,24 @@
 .item {
   position: relative;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 94%;
-  height: 17%;
-  padding: 2%;
+  height: var(--item-height);
+  padding: var(--item-padding);
   margin: 1%;
   background-color: #F5F2F2;
   border-radius: 15px;
+  --item-height: 104px;
+  --item-padding: 12px;
 }
-.item img {
-  margin-right: 2%;
-  height: 100%;
+.info_container {
+  display: flex;
+  align-items: center;
+  width: 68%;
+}
+.info_container img {
+  margin-right: 16px;
+  height: calc(var(--item-height) - 20px);
 }
   </style>

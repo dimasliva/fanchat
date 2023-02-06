@@ -32,9 +32,9 @@ import Policy from '@/components/Views/Auth/Components/Policy.vue';
 }
 </script>
 <style scoped>
-@media (max-height: 700px) {
+@media (max-width: 414px) {
   .auth_container {
-    padding-top: 10px !important;
+    padding-top: 30px !important;
   }
   .auth_container .title {
     font-size: 36px;
@@ -60,18 +60,18 @@ import Policy from '@/components/Views/Auth/Components/Policy.vue';
   justify-content: space-between;
   width: 100%;
   height: 100%;
-  padding-top: 10%;
+  padding-top: 8%;
 }
 .privacy_container {
   margin-top: 10px;
 }
 .title {
   font-weight: 500;
-  font-size: 50px;
+  font-size: 45px;
   line-height: 43px;
   text-align: center;
   color: #383838;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
   .container {
     position: relative;
@@ -132,7 +132,7 @@ import Policy from '@/components/Views/Auth/Components/Policy.vue';
   .btn {
     width: 82%;
     border-radius: 13px;
-    padding: 30px 0px;
+    padding: 28px 0px;
     font-family: 'Petrona';
     font-style: normal;
     font-weight: 900;
