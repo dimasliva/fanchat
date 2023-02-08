@@ -1,25 +1,27 @@
 <template>
-  <div class="modal-backdrop" :class="{'open': open}" @click="closeModal">
+  <div class="modal-backdrop mobile" :class="{'open': open}" @click="closeModal">
     <div class="modal" v-if="profile" @click.stop>
       <div class="header">
         Video Call with {{ profile.name }}
       </div>
       <div class="details">
-        <div class="icons">
+        <div class="detail">
           <span class="icon">
             <img src="@/assets/profile/modal/call/time.svg"/>
           </span>
+          <span class="desc">{{profile.time}}</span>
+        </div>
+        <div class="detail">
           <span class="icon">
             <img src="@/assets/profile/modal/call/video.svg"/>
           </span>
+          <span class="desc">Details will be shown in the chat after the booking</span>
+        </div>
+        <div class="detail">
           <span class="icon">
             <img class="dollar" src="@/assets/profile/modal/call/$.svg"/>
           </span>
-        </div>
-        <div class="detail">
-          <span class="icon">{{profile.time}}</span>
-          <span class="icon">Details will be shown in the chat after the booking</span>
-          <span class="icon">{{profile.price}}</span>
+          <span class="desc">{{profile.time}}</span>
         </div>
       </div>
       <!-- Select one -->
@@ -57,11 +59,22 @@ export default {
 }
 </script>
 <style scoped>
+@media (max-width: 414px) {
+  .modal-backdrop.mobile {
+    border-radius: 0;
+  }
+  .mobile .modal {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .modal .btn_component {
+    font-size: 20px;
+  }
+}
 .btn_component {
-  width: 26%;
-  font-size: 110%;
-  padding: 2% 0%;
-  padding-bottom: 2.5%;
+  font-size: 20px;
+  padding: 10px 30px;
+  padding-bottom: 12px;
   margin: 0 auto;
   margin-bottom: 4%;
 }
@@ -69,7 +82,7 @@ export default {
   margin-bottom: 6%;
 }
 .rule {
-  font-size: 90%;
+  font-size: 12px;
   font-weight: 600;
   text-align: start;
   color: #000000;
@@ -96,39 +109,27 @@ export default {
 }
 .details {
   display: flex;
-  align-items: flex-start;
-  font-size: 105%;
-}
-.icons {
-  display: flex;
   flex-direction: column;
-  margin-right: 3%;
 }
-.icons .icon img {
-  width: 100%;
-}
-.icons .icon .dollar {
-  width: 46%;
-}
-.icons .icon {
-  width: 116%;
+.detail {
+  margin: 10px 0px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .icon {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 12px 0px;
+  width: 40px;
+  margin-right: 10px;
 }
-.detail {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.icon img {
+  width: 25px;
 }
-.detail .icon {
-  margin-top: 5%;
-  justify-content: flex-start;
-  align-items: center;
+.icon .dollar {
+  width: 13px;
+}
+.desc {
   text-align: start;
 }
 

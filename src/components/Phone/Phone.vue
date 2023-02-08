@@ -47,10 +47,10 @@
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
   width: 100%;
   height: 100%;
   padding: 3%;
+  overflow-y: auto;
 }
 .phone {
   position: relative;
@@ -58,8 +58,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 525px;
-  height: 99%;
+  width: 498px;
+  height: 871px;
   box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
   background: #FFFFFF;
   border-radius: var(--phone-border-radius)

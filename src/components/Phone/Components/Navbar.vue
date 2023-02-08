@@ -1,14 +1,14 @@
 <template>
-    <div class="navbar">
-      <img @click="toPage('Home')" class="icons house" src="@/assets/profile/house.svg"/>
-      <img @click="toPage('Explore')" class="icons loop" src="@/assets/profile/loop.svg"/>
-      <span class="plus">
-        <img class="circle" src="@/assets/profile/plus.svg"/>
-        <img class="cross" src="@/assets/profile/x.svg"/>
-      </span>
-      <img @click="toPage('Message')" class="icons comment" src="@/assets/profile/comment.svg"/>
-      <img @click="toPage('Profile')" class="icons profile" src="@/assets/profile/profile.svg"/>
-    </div>
+  <div class="navbar mobile">
+    <img @click="toPage('Home')" class="icons house" src="@/assets/profile/house.svg"/>
+    <img @click="toPage('Explore')" class="icons loop" src="@/assets/profile/loop.svg"/>
+    <span class="plus">
+      <img class="circle" src="@/assets/profile/plus.svg"/>
+      <img class="cross" src="@/assets/profile/x.svg"/>
+    </span>
+    <img @click="toPage('Message')" class="icons comment" src="@/assets/profile/comment.svg"/>
+    <img @click="toPage('Profile')" class="icons profile" src="@/assets/profile/profile.svg"/>
+  </div>
   </template>
   
   <script>
@@ -24,10 +24,24 @@
   </script>
   <style scoped>
   @media (max-width: 414px) {
-    .plus .cross {
-      bottom: 27%;
-      left: 25%;
-    }
+  .navbar.mobile {
+    height: var(--mobile-navbar);
+  }
+  .navbar .house {
+    height: calc(var(--mobile-navbar) / 1.6);
+  }
+  .navbar .comment {
+    height: calc(var(--mobile-navbar) / 1.6);
+  }
+  .navbar .loop {
+    height: calc(var(--mobile-navbar) / 1.6);
+  }
+  .navbar .profile {
+    height: calc(var(--mobile-navbar) / 1.6);
+  }
+  .plus .cross {
+
+  }
   }
   .navbar {
     position: absolute;
@@ -35,19 +49,21 @@
     justify-content: space-between;
     align-items: flex-end;
     width: 80%;
-    height: 6%;
+    height: calc(36px * var(--multy-height));
     bottom: 3%;
+    --multy-height: 1.3;
+    --mobile-navbar: 46px;
   }
   .icons {
-    height: 70%;
+    height: calc(25px * var(--multy-height));
   }
   .house {
-    height: 65%;
+    height: calc(25px * var(--multy-height));
   }
   .loop {
   }
   .comment {
-    height: 65%;
+    height: calc(22px * var(--multy-height));
   }
   .profile {
   }
@@ -59,10 +75,10 @@
     height: 100%;
   }
   .cross {
-    height: 50%;
+    height: 46%;
     position: absolute;
-    bottom: 27%;
-    left: 27%;
+    bottom: 29%;
+    left: 28%;
   }
   .plus .circle {
     width: 100%;

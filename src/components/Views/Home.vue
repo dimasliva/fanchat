@@ -9,39 +9,41 @@
           <span class="session">{{item.session}}</span>
         </div>
       </div>
-      <button class="btn">Book Again</button>
+      <Btn :text="'Book Again'"/>
     </div>
   </div>
 </template>
   
   <script>
+import Btn from '../assets/Btn.vue';
+
   export default {
     name: "Home",
     data: () => ({
-      items: [
-      {
-        img: "avatar_woman.svg",
-        name: "Savannah",
-        tag: "Savannah",
-        session: "Last session was on Jan 6 2023",
-      },
-      {
-        img: "avatar_woman.svg",
-        name: "Savannah",
-        tag: "Savannah",
-        session: "Last session was on Jan 6 2023",
-      },
-      {
-        img: "avatar_woman.svg",
-        name: "Savannah",
-        tag: "Savannah",
-        session: "Last session was on Jan 6 2023",
-      },
-    ]
-    }), 
-    methods: {
-    },
-  }
+        items: [
+            {
+                img: "avatar_woman.svg",
+                name: "Savannah",
+                tag: "Savannah",
+                session: "Last session was on Jan 6 2023",
+            },
+            {
+                img: "avatar_woman.svg",
+                name: "Savannah",
+                tag: "Savannah",
+                session: "Last session was on Jan 6 2023",
+            },
+            {
+                img: "avatar_woman.svg",
+                name: "Savannah",
+                tag: "Savannah",
+                session: "Last session was on Jan 6 2023",
+            },
+        ]
+    }),
+    methods: {},
+    components: { Btn }
+}
   </script>
   <style scoped>
   @media (max-width: 414px) {
@@ -63,20 +65,6 @@
     display: flex;
     align-items: center;
     width: 68%;
-  }
-  .btn {
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.25);
-    border: 2px solid transparent;
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), 
-    linear-gradient(180deg, #C867F7 0%, #DB7859 100%);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    box-shadow: 2px 1000px 1px #fff inset;
-    border-radius: 6px;
-    padding: 12px 16px;
-    background-color: #fff;
-    cursor: pointer;
-    font-weight: 600;
   }
 .info {
   display: flex;

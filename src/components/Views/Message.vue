@@ -9,53 +9,37 @@
           <span class="confirmed">Confirmed Booking!</span>
         </div>
       </div>
-      <button class="btn">{{item.session}}</button>
+      <Btn :text="item.session"/>
     </div>
   </div>
 </template>
   
   <script>
+import Btn from '../assets/Btn.vue';
+
   export default {
     name: "Message",
     data: () => ({
-      items: [
-      {
-        img: "avatar_woman.svg",
-        name: "Savannah",
-        tag: "Savannah",
-        session: "Jan 20 @7pm",
-      },
-      {
-        img: "avatar_woman_2.svg",
-        name: "Kylie",
-        tag: "Kylie",
-        session: "Jan 20 @9pm",
-      },
-    ]
-    }), 
-    methods: {
-
-    },
-  }
+        items: [
+            {
+                img: "avatar_woman.svg",
+                name: "Savannah",
+                tag: "Savannah",
+                session: "Jan 20 @7pm",
+            },
+            {
+                img: "avatar_woman_2.svg",
+                name: "Kylie",
+                tag: "Kylie",
+                session: "Jan 20 @9pm",
+            },
+        ]
+    }),
+    methods: {},
+    components: { Btn }
+}
   </script>
   <style scoped>
-  .btn {
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.25);
-  border: 2px solid transparent;
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), 
-  linear-gradient(180deg, #C867F7 0%, #DB7859 100%);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  box-shadow: 2px 1000px 1px #fff inset;
-  border-radius: 22px;
-  padding: 10px 6px;
-  background-color: #fff;
-  cursor: pointer;
-  position: absolute;
-  top: 36%;
-  right: 5%;
-  font-weight: 600;
-}
 .info {
   display: flex;
   flex-direction: column;
@@ -77,7 +61,7 @@
 .info .confirmed {
   font-weight: 700;
   color: #C867F7;
-  font-size: 13px;
+  font-size: 12px;
   text-align: left;
 }
 .items {

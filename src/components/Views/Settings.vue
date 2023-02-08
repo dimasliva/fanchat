@@ -2,14 +2,18 @@
   <div class="items">
     <!-- Profile -->
     <div class="item">
-      <div class="profile">
-        <img :src="require(`@/assets/profile/${profile.avatar}`)"/>
+      <div class="user_info">
+        <div class="profile">
+          <img :src="require(`@/assets/profile/${profile.avatar}`)"/>
+        </div>
+        <div class="name">
+          <div class="nick">{{ profile.name }}</div>
+          <div class="tag">@{{ profile.tag }}</div>
+        </div>
       </div>
-      <div class="name">
-        <div class="nick">{{ profile.name }}</div>
-        <div class="tag">@{{ profile.tag }}</div>
+      <div class="btn_container">
+        <Btn @click="openPage('ProfileEdit')" :text="'Edit Profile'"/>
       </div>
-      <button @click="openPage('ProfileEdit')" class="btn edit">Edit Profile</button>
     </div>
     <!-- Change Password -->
     <div class="item setting">
@@ -25,7 +29,7 @@
         <img src="@/assets/settings/arrow.svg"/>
       </div>
     </div>
-        <!-- Log out -->
+    <!-- Log out -->
     <div class="item setting">
       <div class="title">Log out</div>
       <div class="arrow">
@@ -36,33 +40,33 @@
 </template>
   
 <script>
+import Btn from '../assets/Btn.vue';
+
   export default {
     name: "Settings",
     data: () => ({
-      profile: {
-        avatar: "avatar_woman.svg",
-        name: "Savannah",
-        tag: "Savannah",
-      }
-    }), 
+        profile: {
+            avatar: "avatar_woman.svg",
+            name: "Savannah",
+            tag: "Savannah",
+        }
+    }),
     methods: {
-      openPage(page) {
-        this.$router.push({name: page})
-      },
+        openPage(page) {
+            this.$router.push({ name: page });
+        },
     },
-  }
+    components: { Btn }
+}
   </script>
-  <style scoped>
-  @media (max-width: 428px) {
-    .items .item {
-      height: 14%;
-    }
+<style scoped>
+  @media (max-width: 414px) {
   }
   .item.setting {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: 8%;
+    padding: 8%;
     font-size: 140%;
     cursor: pointer;
   }
@@ -73,18 +77,6 @@
   .item.setting .arrow img.logout{
     width: 22px;
     margin-right: 0px;
-  }
-  .btn {
-    border: 1px solid #CDCCCC;
-    border-radius: 21px;
-    background-color: transparent;
-    position: absolute;
-    right: 2%;
-    bottom: 10%;
-    padding: 2.5% 6%;
-    font-weight: 300;
-    font-size: 98%;
-    cursor: pointer;
   }
 .items {
   display: flex;
@@ -97,12 +89,25 @@
 .item {
   position: relative;
   display: flex;
+  justify-content: space-between;
   width: 94%;
-  height: 17%;
+  height: 104px;
   padding: 2%;
   margin: 1%;
   background-color: #F5F2F2;
   border-radius: 15px;
+}
+.btn_container {
+  margin: auto 0px;
+}
+.btn {
+  font-size: 14px;
+  font-weight: 300;
+  padding: 12px 24px;
+}
+.user_info {
+  display: flex;
+  align-items: center;
 }
 .name {
   text-align: start;
@@ -115,13 +120,13 @@
 }
 .nick {
   font-weight: 500;
-  font-size: 114%;
+  font-size: 18px;
 }
 .tag {
-  font-size: 98%;
-  font-weight: 300;
+  font-size: 16px;
+font-weight: 300;
 }
 .profile, .profile img {
   height: 100%;
 }
-  </style>
+</style>

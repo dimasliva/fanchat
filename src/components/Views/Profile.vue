@@ -90,7 +90,7 @@ export default {
 }
 .profile {
   width: 95%;
-  height: 77%;
+  height: 76%;
   overflow-y: auto;
 }
 .profile .photo {

@@ -7,15 +7,18 @@
       </span>
     </div>
     <div class="fields">
-      <input type="text" placeholder="Name" class="field name" :value="profile.name">
-      <input type="text" placeholder="Tag" class="field tag" :value="'@' + profile.tag">
-      <input type="text" placeholder="Bio" class="field bio" :value="profile.bio">
+      <InputField :placeholder="'Name'" :bold="true" :value="profile.name"/>
+      <InputField :placeholder="'Tag'" :value="'@' + profile.tag"/>
+      <InputField :placeholder="'Bio'" :value="profile.bio"/>
     </div>
-    <button class="btn save">Save</button>
+    <Btn :text="'Save'"/>
   </div>
 </template>
   
 <script>
+import Btn from '../assets/Btn.vue';
+import InputField from '@/components/assets/InputField.vue';
+
   export default {
     name: "ProfileEdit",
     data: () => ({
@@ -25,22 +28,17 @@
         tag: "Savannah",
         bio: "",
       }
-    }), 
-    methods: {
-    },
-  }
+    }),
+    methods: {},
+    components: { Btn, InputField }
+}
 </script>
 <style scoped>
   .btn {
     margin-top: 20%;
-    border: 1px solid #CDCCCC;
-    border-radius: 21px;
-    background-color: transparent;
     padding: 2.5% 10%;
     font-weight: 300;
-    font-weight: 300;
     font-size: 110%;
-    cursor: pointer;
   }
   .edit_container {
     display: flex;
@@ -53,6 +51,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-top: 30px;
   }
   .field.name {
     font-weight: 500;
@@ -61,15 +60,9 @@
     font-style: normal;
   }
   .field.tag {
-    font-style: normal;
-    font-weight: 300;
-  }
-  .field {
-    font-size: 108%;
-    border: 0px;
-    border-bottom: 1px solid #AFABAB;
-    margin: 4% 0%;
-    line-height: 23px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #858585;
   }
   .profile {
     position: relative;

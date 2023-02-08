@@ -1,10 +1,10 @@
 <template>
-  <button class="btn">{{ text }}</button>
+  <button class="btn mobile">{{ text }}</button>
 </template>
   
   <script>
   export default {
-    name: "Phone",
+    name: "Btn",
     props: {
       text: String,
     },
@@ -16,6 +16,12 @@
   }
   </script>
 <style scoped>
+  @media (max-width: 414px) {
+    .btn.mobile {
+      font-size: 14px;
+      color: #000000;
+    }
+  }
 .btn {
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.25);
   border: 2px solid transparent;
@@ -23,11 +29,12 @@
   linear-gradient(180deg, #C867F7 0%, #DB7859 100%);
   background-origin: border-box;
   background-clip: content-box, border-box;
-  box-shadow: 2px 1000px 1px #fff inset;
-  border-radius: 22px;
+  box-shadow: 1px 1000px 1px #fff inset;
+  border-radius: 6px;
   padding: 12px 16px;
   background-color: #fff;
   cursor: pointer;
   font-weight: 600;
+  color: #000000;
 }
 </style>
