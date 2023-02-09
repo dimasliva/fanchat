@@ -14,7 +14,7 @@
   </div>
 </template>
   
-  <script>
+<script>
 import Btn from '../assets/Btn.vue';
 
   export default {
@@ -100,6 +100,7 @@ import Btn from '../assets/Btn.vue';
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  padding-top: var(--top-margin);
 }
 .item {
   position: relative;

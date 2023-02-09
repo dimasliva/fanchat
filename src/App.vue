@@ -11,6 +11,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Petrona:wght@200;300;400;500;600;700;800;900&display=swap');
 :root {
   --phone-border-radius: 21px;
+  --top-margin: 30px;
 }
 .bg_text_1, .bg_text_2, .bg_text_3, .bg_text_4 {
   position: fixed;

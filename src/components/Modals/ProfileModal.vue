@@ -31,8 +31,8 @@
       </div>
       <div class="title">Rules:</div>
       <div class="rules">
-        <div class="rule">-This is a safe space for everyone and disrespectful behavior won’t be tolerated.</div>
-        <div class="rule">-Keep it PG! FanChat is a clean/non-sexual platform.</div>
+        <div class="rule mobile">-This is a safe space for everyone and disrespectful behavior won’t be tolerated.</div>
+        <div class="rule mobile">-Keep it PG! FanChat is a clean/non-sexual platform.</div>
       </div>
       <Btn class="btn_component" :text="'Pay'"/>
     </div>
@@ -70,6 +70,9 @@ export default {
   .modal .btn_component {
     font-size: 20px;
   }
+  .rule.mobile {
+    font-size: 12px;
+  }
 }
 .btn_component {
   font-size: 20px;
@@ -82,7 +85,7 @@ export default {
   margin-bottom: 6%;
 }
 .rule {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   text-align: start;
   color: #000000;
@@ -165,10 +168,8 @@ export default {
   border-radius: var(--phone-border-radius)
 }
 .header {
-  font-family: 'Petrona';
-  font-style: normal;
   font-weight: 500;
-  font-size: 140%;
+  font-size: 21px;
   line-height: 24px;
   color: #000000;
 }

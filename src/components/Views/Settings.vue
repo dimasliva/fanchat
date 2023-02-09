@@ -16,7 +16,7 @@
       </div>
     </div>
     <!-- Change Password -->
-    <div class="item setting">
+    <div class="item setting" @click="openPage('Creator')">
       <div class="title">Change Password</div>
       <div class="arrow">
         <img src="@/assets/settings/arrow.svg"/>
@@ -85,6 +85,7 @@ import Btn from '../assets/Btn.vue';
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  padding-top: var(--top-margin);
 }
 .item {
   position: relative;

@@ -1,27 +1,28 @@
 <template>
   <div class="creator_container">
-    <input type="text" placeholder="Name">
-    <input type="text" placeholder="Username">
-    <input type="text" placeholder="Date of Birth">
-    <input type="text" placeholder="Phone number(req)">
-    <input type="text" placeholder="Instagram(req)">
-    <input type="text" placeholder="TikTok">
+    <InputField :style="{paddingLeft: '10px'}" :fontsize="20" :placeholder="'Name'"/>
+    <InputField :style="{paddingLeft: '10px'}" :fontsize="20" :placeholder="'Username'"/>
+    <InputField :style="{paddingLeft: '10px'}" :fontsize="20" :placeholder="'Date of Birth'"/>
+    <InputField :style="{paddingLeft: '10px'}" :fontsize="20" :placeholder="'Phone number(req)'"/>
+    <InputField :style="{paddingLeft: '10px'}" :fontsize="20" :placeholder="'Instagram(req)'"/>
+    <InputField :style="{paddingLeft: '10px'}" :fontsize="20" :placeholder="'TikTok'"/>
     <button class="btn" @click="toPage('Stripe')">Next</button>
   </div>
 </template>
   
 <script>
+import InputField from '../assets/InputField.vue';
+
   export default {
     name: "Creator",
-    data: () => ({
-
-    }), 
+    data: () => ({}),
     methods: {
-      toPage(page) {
-        this.$router.push({name: page})
-      }
+        toPage(page) {
+            this.$router.push({ name: page });
+        }
     },
-  }
+    components: { InputField }
+}
 </script>
 <style scoped>
 .creator_container {
@@ -29,33 +30,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 80%;
+  height: 83%;
   width: 88%;
-  margin-top: 1%;
+  padding-top: var(--top-margin);
 }
 .btn {
   color: #F5E0FF;
   background-color: #181817;
-  padding: 5%;
-  font-size: 200%;
+  padding: 25px;
   font-weight: 900;
   border: 0px solid;
   border-radius: 8px;
   width: 80%;
   cursor: pointer;
+  font-size: 30px;
 }
   .creator_container input {
-    border: 0px;
-    border-bottom: 1px solid gray;
-    font-family: 'Petrona';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 230%;
-    line-height: 33px;
-    color: #636363;
-    padding-left: 10px;
-    outline: none;
     width: 100%;
-    background: transparent;
   }
 </style>

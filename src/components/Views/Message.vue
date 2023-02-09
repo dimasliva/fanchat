@@ -9,7 +9,11 @@
           <span class="confirmed">Confirmed Booking!</span>
         </div>
       </div>
-      <Btn :text="item.session"/>
+      <div class="btn_call" v-if="item.call">
+        <Btn :call="item.call" :text="item.session" class="btn mobile"/>
+        <span>Tap to Connect</span>
+      </div>
+      <Btn v-else :call="item.call" :text="item.session" class="btn mobile"/>
     </div>
   </div>
 </template>
@@ -17,29 +21,68 @@
   <script>
 import Btn from '../assets/Btn.vue';
 
-  export default {
-    name: "Message",
-    data: () => ({
-        items: [
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                session: "Jan 20 @7pm",
-            },
-            {
-                img: "avatar_woman_2.svg",
-                name: "Kylie",
-                tag: "Kylie",
-                session: "Jan 20 @9pm",
-            },
-        ]
-    }),
-    methods: {},
-    components: { Btn }
+export default {
+  name: "Message",
+  data: () => ({
+    items: [
+      {
+        img: "avatar_woman.svg",
+        name: "Savannah",
+        tag: "Savannah",
+        session: "Jan 20 @7pm",
+        call: true,
+      },
+      {
+        img: "avatar_woman_2.svg",
+        name: "Kylie",
+        tag: "Kylie",
+        session: "Jan 20 @9pm",
+        call: false,
+      },
+    ]
+  }),
+  methods: {},
+  components: { Btn }
 }
-  </script>
-  <style scoped>
+</script>
+<style scoped>
+@media (max-width: 414px) {
+  .btn.mobile {
+    font-size: 9px;
+  }
+}
+.btn_call {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  font-weight: 500;
+}
+.btn_call span {
+  margin-top: 3px;
+}
+  .items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding-top: var(--top-margin);
+  }
+  .item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 94%;
+    height: var(--item-height);
+    padding: var(--item-padding);
+    margin: 1%;
+    background-color: #F5F2F2;
+    border-radius: 15px;
+    --item-height: 104px;
+    --item-padding: 12px;
+  }
 .info {
   display: flex;
   flex-direction: column;
@@ -64,28 +107,6 @@ import Btn from '../assets/Btn.vue';
   font-size: 12px;
   text-align: left;
 }
-.items {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-}
-.item {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 94%;
-  height: var(--item-height);
-  padding: var(--item-padding);
-  margin: 1%;
-  background-color: #F5F2F2;
-  border-radius: 15px;
-  --item-height: 104px;
-  --item-padding: 12px;
-}
 .info_container {
   display: flex;
   align-items: center;
@@ -95,4 +116,7 @@ import Btn from '../assets/Btn.vue';
   margin-right: 16px;
   height: calc(var(--item-height) - 20px);
 }
-  </style>
+.btn {
+  font-size: 12px;
+}
+</style>

@@ -1,5 +1,12 @@
 <template>
-  <input type="text" :placeholder="placeholder" class="field" :class="{'bold': bold}" :value="value">
+  <input 
+    type="text" 
+    :placeholder="placeholder" 
+    class="field" 
+    :class="{'bold': bold}" 
+    :value="value"
+    :style="{fontSize: fontsize + 'px'}"
+  >
 </template>
   
   <script>
@@ -9,6 +16,7 @@
       value: String,
       placeholder: String,
       bold: Boolean,
+      fontsize: Number,
     },
     data: () => ({
     }), 

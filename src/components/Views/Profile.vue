@@ -1,6 +1,6 @@
 <template>
   <ProfileModal :open="modalOpen" :profile="modalItem" @closeModal="closeModal"/>
-  <div class="profile">
+  <div class="profile mobile">
     <div class="photo">
       <img :src="require(`@/assets/profile/${profile.img}`)">
       <Btn class="btn_component" :text="btnText" @click="openModal"/>
@@ -51,6 +51,11 @@ export default {
 }
 </script>
 <style scoped>
+@media (max-width: 414px) {
+  .profile.mobile {
+    height: 78%;
+  }
+}
 .btn_component {
   position: absolute;
   bottom: -4%;
@@ -75,6 +80,7 @@ export default {
   align-items: flex-start;
   justify-content: flex-end;
   padding: 0 2.5%;
+  margin-top: 5px;
 }
 .info .name {
   font-family: 'Petrona';
@@ -90,8 +96,9 @@ export default {
 }
 .profile {
   width: 95%;
-  height: 76%;
+  height: 81%;
   overflow-y: auto;
+  padding-top: var(--top-margin);
 }
 .profile .photo {
   position: relative;

@@ -114,6 +114,9 @@ import Btn from '../assets/Btn.vue';
     .items .item img {
       height: 90px;
     }
+    .items.mobile {
+      height: 78%;
+    }
   }
   .btn {
     padding: 8px 10px;
@@ -141,9 +144,9 @@ import Btn from '../assets/Btn.vue';
     width: 100%;
     overflow-y: auto;
     padding: 0px 1%;
-    padding-top: 10px;
+    padding-top: var(--top-margin);
     flex-wrap: wrap;
-    height: 76%;
+    height: 81%;
   }
   .item {
     position: relative;

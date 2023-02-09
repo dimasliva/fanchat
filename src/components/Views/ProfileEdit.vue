@@ -46,6 +46,7 @@ import InputField from '@/components/assets/InputField.vue';
     justify-content: center;
     align-items: center;
     width: 90%;
+    padding-top: var(--top-margin);
   }
   .fields {
     display: flex;

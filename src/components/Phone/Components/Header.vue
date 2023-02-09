@@ -25,21 +25,22 @@ import Logo from '@/components/Logo.vue';
   </script>
   <style scoped>
     .header {
-      margin-top: 3%;
-      margin-bottom: 7%;
       width: 100%;
       border-bottom: 1px solid #9D9D9D;
     }
     .container {
-      padding: 0px 4%;
-      padding-top: 6%;
-      padding-bottom: 1%;
+      padding: 20px 4%;
+      padding-top: 30px;
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
     }
     .settings {
       padding-right: 1%;
+      height: 23px;
       cursor: pointer;
     }
-  </style>
+    .settings img {
+      height: 100%;
+    }
+</style>
