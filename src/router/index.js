@@ -11,12 +11,18 @@ import ProfileEdit from '@/views/Profile/ProfileEdit.vue'
 import Earning from '@/views/Profile/Earning.vue'
 import Creator from '@/views/Profile/Creator.vue'
 import Stripe from '@/views/Profile/Stripe.vue'
+import Privacy from '@/views/Privacy.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Launch',
     component: Launch
+  },
+  {
+    path: '/privacy',
+    name: 'Privacy',
+    component: Privacy
   },
   {
     path: '/signup',
