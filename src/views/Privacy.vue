@@ -190,6 +190,11 @@ export default {
 }
 </script>
 <style scoped>
+@media (max-width: 414px) {
+  .content {
+    padding: 0 20px;
+  }
+}
 .container {
   width: 100%;
   background-color: #fff;
