@@ -2,11 +2,11 @@
   <div class="privacy">
     <div class="text">By Signing up, you are agreeing with our</div>
     <div class="text">
-      <span class="terms" @click="toPrivacy()">
+      <span class="terms" @click="toPage('Terms')">
         Terms of use
       </span>
       and
-      <span class="terms" @click="toPrivacy()">
+      <span class="terms" @click="toPage('Privacy')">
         Privacy Policy
       </span>
     </div>
@@ -17,8 +17,8 @@
   export default {
     name: "Policy",
     methods: {
-      toPrivacy() {
-        this.$router.push({name: "Privacy"})
+      toPage(page) {
+        this.$router.push({name: page})
       }
     },
   }

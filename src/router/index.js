@@ -12,6 +12,7 @@ import Earning from '@/views/Profile/Earning.vue'
 import Creator from '@/views/Profile/Creator.vue'
 import Stripe from '@/views/Profile/Stripe.vue'
 import Privacy from '@/views/Privacy.vue'
+import Terms from '@/views/Terms.vue'
 
 const routes = [
   {
@@ -23,6 +24,11 @@ const routes = [
     path: '/privacy',
     name: 'Privacy',
     component: Privacy
+  },
+  {
+    path: '/terms',
+    name: 'Terms',
+    component: Terms
   },
   {
     path: '/signup',
