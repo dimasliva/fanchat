@@ -1,6 +1,6 @@
 <template>
   <router-view class=""/>
-  <span class="logo_fanchat">FanChat</span>
+  <span class="img logo_fanchat" />
   <img class="bg_text_1" src="@/assets/background/FANCHAT.svg"/>
   <img class="bg_text_2" src="@/assets/background/ANCHAT.svg"/>
   <img class="bg_text_3" src="@/assets/background/FANCHAT_right.svg"/>
@@ -56,6 +56,7 @@ body, html {
 #app {
   height: 100%;
   width: 100%;
+  overflow-y: auto;
   font-family: 'Petrona', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -64,18 +65,21 @@ body, html {
 }
 .logo_fanchat {
   position: fixed;
-  left: 3%;
-  top: 0.2%;
+  left: .5%;
+  top: 1%;
   user-select: none;
 
-  font-family: 'Petrona', serif;
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 55.27px;
+  background-image: url("@/assets/logos/leftLogo.svg");
 
-  color: #F0CAC9;
-  background-color: transparent;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  width: 223px;
+  height: 73px;
+
   z-index: -1;
-}
+  }
+.img {
+  display: flex;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+} 
 </style>
