@@ -3,6 +3,7 @@
     <div class="pages" v-if="window.width > 428">
       <PageOne/>
       <PageTwo/>
+      <PageThree/>
     </div>
     <PhoneMobile v-else-if="window.width < 428"/>
   </div>
@@ -12,10 +13,11 @@
 import PhoneMobile from "@/components/Launch/PhoneMobile.vue";
 import PageOne from "@/components/Launch/PageOne.vue";
 import PageTwo from "@/components/Launch/PageTwo.vue";
+import PageThree from "@/components/Launch/PageThree.vue";
 
 export default {
   name: 'Launch',
-  components: { PhoneMobile, PageOne, PageTwo },
+  components: { PhoneMobile, PageOne, PageTwo, PageThree },
   data: () => ({
     window: {
       width: 0,
