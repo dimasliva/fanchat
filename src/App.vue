@@ -12,6 +12,8 @@
 :root {
   --phone-border-radius: 21px;
   --top-margin: 30px;
+  --phone-width: 498px;
+  --phone-height: 871px;
 }
 .bg_text_1, .bg_text_2, .bg_text_3, .bg_text_4 {
   position: fixed;

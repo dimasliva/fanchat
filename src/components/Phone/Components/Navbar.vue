@@ -2,7 +2,7 @@
   <div class="navbar mobile">
     <img @click="toPage('Home')" class="icons house" src="@/assets/profile/house.svg"/>
     <img @click="toPage('Explore')" class="icons loop" src="@/assets/profile/loop.svg"/>
-    <span class="plus">
+    <span class="plus" @click="toPage('Details')">
       <img class="circle" src="@/assets/profile/plus.svg"/>
       <img class="cross" src="@/assets/profile/x.svg"/>
     </span>

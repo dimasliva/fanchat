@@ -11,6 +11,7 @@
           <Earning v-else-if="content === 'Earning'"/>
           <Creator v-else-if="content === 'Creator'"/>
           <Stripe v-else-if="content === 'Stripe'"/>
+          <Details v-else-if="content === 'Details'"/>
         <Navbar v-if="$route.name !== 'Creator' && $route.name !== 'Stripe'"/>
       </div>
     </div>
@@ -28,12 +29,13 @@
   import Earning from "@/components/Views/Earning.vue";
   import Creator from "@/components/Views/Creator.vue";
   import Stripe from "@/components/Views/Stripe.vue";
+  import Details from "@/components/Views/Details.vue";
   export default {
     name: "Phone",
     props: {
       content: String,
     },
-    components: { Navbar, Header, Profile, Message, Explore, Home, Settings, ProfileEdit, Earning, Creator, Stripe },
+    components: { Navbar, Header, Profile, Details, Message, Explore, Home, Settings, ProfileEdit, Earning, Creator, Stripe },
     data: () => ({
     }), 
     methods: {

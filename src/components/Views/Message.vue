@@ -10,8 +10,8 @@
         </div>
       </div>
       <div class="btn_call" v-if="item.call">
-        <Btn :call="item.call" :text="item.session" class="btn mobile"/>
-        <span>Tap to Connect</span>
+        <Btn :call="item.call" :text="item.session" class="btn mobile" @click="toPage('Call')"/>
+        <span class="tap">Tap to Connect</span>
       </div>
       <Btn v-else :call="item.call" :text="item.session" class="btn mobile"/>
     </div>
@@ -41,8 +41,12 @@ export default {
       },
     ]
   }),
-  methods: {},
-  components: { Btn }
+  components: { Btn },
+  methods: {
+    toPage(page) {
+      this.$router.push({name: page})
+    }
+  },
 }
 </script>
 <style scoped>
@@ -56,6 +60,7 @@ export default {
   flex-direction: column;
   font-size: 12px;
   font-weight: 500;
+  margin-top: 18px;
 }
 .btn_call span {
   margin-top: 3px;
@@ -118,5 +123,10 @@ export default {
 }
 .btn {
   font-size: 12px;
+}
+.tap {
+  font-weight: 700;
+  font-size: 10px;
+  color: #181817;
 }
 </style>

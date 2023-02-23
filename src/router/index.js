@@ -13,6 +13,8 @@ import Creator from '@/views/Profile/Creator.vue'
 import Stripe from '@/views/Profile/Stripe.vue'
 import Privacy from '@/views/Privacy.vue'
 import Terms from '@/views/Terms.vue'
+import Call from '@/views/Profile/Call.vue'
+import Details from '@/views/Profile/Details.vue'
 
 const routes = [
   {
@@ -84,6 +86,16 @@ const routes = [
     path: '/stripe',
     name: 'Stripe',
     component: Stripe
+  },
+  {
+    path: '/call',
+    name: 'Call',
+    component: Call
+  },
+  {
+    path: '/details',
+    name: 'Details',
+    component: Details
   },
 ]
 const router = createRouter({
