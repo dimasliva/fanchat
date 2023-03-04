@@ -2,47 +2,41 @@
   <div class="items">
     <div class="item" v-for="item in items" :key="item">
       <div class="info_container">
-        <img :src="require(`@/assets/profile/${item.img}`)">
+        <span 
+          class="img profile"
+          :style="`background-image: url(${item.model.profile_picture ? item.model.profile_picture : require('@/assets/profile/avatar_woman.svg')});`"
+        />
         <div class="info">
-          <span class="name">{{ item.name }}</span>
-          <span class="tag">@{{ item.tag }}</span>
-          <span class="session">{{item.session}}</span>
+          <span class="name">{{ item.model.username }}</span>
+          <span class="tag">@{{ item.model.username }}</span>
+          <span class="session">Last sessions was on {{moment(item.datetime).format("MMM D YYYY")}}</span>
         </div>
       </div>
-      <Btn :text="'Book Again'"/>
+      <Btn :text="booking_status ? 'Book Again' : 'Book Again'"/>
     </div>
   </div>
 </template>
   
 <script>
 import Btn from '../assets/Btn.vue';
-
+import { getBuyerSeances } from "@/api/buyer/func";
+import moment from "moment";
   export default {
     name: "Home",
+    components: { Btn },
     data: () => ({
-        items: [
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                session: "Last session was on Jan 6 2023",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                session: "Last session was on Jan 6 2023",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                session: "Last session was on Jan 6 2023",
-            },
-        ]
+      items: [],
+      moment: moment,
     }),
-    methods: {},
-    components: { Btn }
+    methods: {
+      async getSeances() {
+        this.items = (await getBuyerSeances()).seanses
+        console.log('getSeances', data)
+      }
+    },
+    mounted() {
+      this.getSeances()
+    },
 }
   </script>
   <style scoped>
@@ -63,7 +57,7 @@ import Btn from '../assets/Btn.vue';
   }
   .info_container {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     width: 68%;
   }
 .info {
@@ -71,8 +65,6 @@ import Btn from '../assets/Btn.vue';
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
-  height: var(--item-height);
-  padding-bottom: var(--item-padding);
 }
 .info .name {
   color: #000000;
@@ -108,16 +100,17 @@ import Btn from '../assets/Btn.vue';
   justify-content: space-between;
   align-items: center;
   width: 94%;
-  height: var(--item-height);
   padding: var(--item-padding);
   margin: 1%;
   background-color: #F5F2F2;
   border-radius: 15px;
-  --item-height: 104px;
   --item-padding: 12px;
 }
-.item img {
+.item .profile {
+  width: 90px;
+  height: 90px;
   margin-right: 16px;
-  height: calc(var(--item-height) - 20px);
+  border-radius: 7px;
 }
+
   </style>

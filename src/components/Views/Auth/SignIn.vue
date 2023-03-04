@@ -2,8 +2,8 @@
   <div class="auth_container">
     <div class="title">Sign in</div>
     <div class="fields">
-      <input type="text" class="input_email" placeholder="Email">
-      <input type="text" placeholder="Password">
+      <input type="text" v-model="email" class="input_email" placeholder="Email">
+      <input type="password" v-model="password" placeholder="Password">
       <div class="privacy_container">
         <Policy/>
       </div>
@@ -17,15 +17,23 @@
   
 <script>
 import Policy from '@/components/Views/Auth/Components/Policy.vue';
+import { signIn } from '@/api/user/func';
+
   export default {
     name: "SignIn",
-    data: () => ({}),
+    data: () => ({
+      email: "",
+      password: "",
+    }),
     methods: {
         toPage(page) {
             this.$router.push({ name: page });
         },
-        login(page) {
+        async login(page) {
+          let res = await signIn(this.email, this.password)
+          if(!res.detail) {
             this.$router.push({ name: page });
+          }
         },
     },
     components: { Policy }

@@ -6,7 +6,13 @@
   <img class="bg_text_3" src="@/assets/background/FANCHAT_right.svg"/>
   <img class="bg_text_4" src="@/assets/background/FAN_CHAT.svg"/>
 </template>
-
+<script>
+  export default {
+    name: "App",
+    mounted() {
+    }
+  }
+</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Petrona:wght@200;300;400;500;600;700;800;900&display=swap');
 :root {

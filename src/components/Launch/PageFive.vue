@@ -110,7 +110,6 @@
     left: 830px;
     background-image: url("@/assets/launch/stars/four.svg");
   }
-
   .five {
     bottom: 250px;
     left: 50px;

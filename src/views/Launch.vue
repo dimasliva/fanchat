@@ -6,6 +6,7 @@
       <PageThree/>
       <PageFour/>
       <PageFive/>
+      <PageSix/>
     </div>
     <PhoneMobile v-else-if="window.width < 428"/>
   </div>
@@ -18,10 +19,11 @@ import PageTwo from "@/components/Launch/PageTwo.vue";
 import PageThree from "@/components/Launch/PageThree.vue";
 import PageFour from "@/components/Launch/PageFour.vue";
 import PageFive from "@/components/Launch/PageFive.vue";
+import PageSix from "@/components/Launch/PageSix.vue";
 
 export default {
   name: 'Launch',
-  components: { PhoneMobile, PageOne, PageTwo, PageThree, PageFour, PageFive },
+  components: { PhoneMobile, PageOne, PageTwo, PageThree, PageFour, PageFive, PageSix },
   data: () => ({
     window: {
       width: 0,

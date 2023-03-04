@@ -1,100 +1,35 @@
 <template>
   <div class="items mobile">
     <div class="item" v-for="item in items" :key="item">
-      <img :src="require(`@/assets/profile/${item.img}`)">
+      <img :src="item.profile_picture ? item.profile_picture : require('@/assets/profile/avatar_woman.svg')">
       <div class="info">
-        <span class="name">{{ item.name }}</span>
-        <span class="tag">@{{ item.tag }}</span>
+        <span class="name">{{ item.username }}</span>
+        <span class="tag">@{{ item.username }}</span>
       </div>
-      <Btn :text="item.price"/>
+      <Btn :text="item.price ? '$' + item.price + '/8min' : '$0/8min'"/>
       <!-- <button class="mobile btn">{{item.price}}</button> -->
     </div>
   </div>
 </template>
   
 <script>
-import Btn from '../assets/Btn.vue';
-
+  import Btn from '../assets/Btn.vue';
+  import { getAllModelsList } from "@/api/model/func";
   export default {
     name: "Explore",
+    components: { Btn },
     data: () => ({
-        items: [
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                price: "$50/8mins",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                price: "$50/8mins",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                price: "$50/8mins",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                price: "$50/8mins",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                price: "$50/8mins",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                price: "$50/8mins",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                price: "$50/8mins",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                price: "$50/8mins",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                price: "$50/8mins",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                price: "$50/8mins",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                price: "$50/8mins",
-            },
-            {
-                img: "avatar_woman.svg",
-                name: "Savannah",
-                tag: "Savannah",
-                price: "$50/8mins",
-            },
-        ]
+      items: []
     }),
-    methods: {},
-    components: { Btn }
+    methods: {
+      async getSeances() {
+        this.items = (await getAllModelsList()).seanses
+        console.log('getUsers', this.items)
+      }
+    },
+    mounted() {
+      this.getSeances()
+    }
 }
 </script>
 <style scoped>
@@ -140,7 +75,7 @@ import Btn from '../assets/Btn.vue';
   .items {
     display: grid;
     grid-template-rows: 32% 32% 32%;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 33% 33% 33%;
     width: 100%;
     overflow-y: auto;
     padding: 0px 1%;

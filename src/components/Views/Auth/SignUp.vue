@@ -2,12 +2,13 @@
   <div class="auth_container">
     <div class="title">Sign up</div>
     <div class="fields">
-      <input type="text" placeholder="Name">
-      <input type="text" class="input_email" placeholder="Email">
-      <input type="text" placeholder="Password">
+      <input type="text" v-model="username" placeholder="Name">
+      <input type="text" v-model="email" class="input_email" placeholder="Email">
+      <input type="password" v-model="pass" placeholder="Password">
       <div class="privacy_container">
         <Policy/>
-      </div>
+      </div> 
+
     </div>
     <div class="btns">
       <button @click="register" class="btn signup">Sign up</button>
@@ -17,29 +18,27 @@
 </template>
   
 <script>
+      // model
+      //  buyer 
+      //  stuff
+import { signUp } from '@/api/user/func';
 import Policy from '@/components/Views/Auth/Components/Policy.vue';
-
   export default {
     name: "SignUp",
     components: { Policy },
     data: () => ({
-      window: {
-            width: 0,
-            height: 0
-        }
     }),
     methods: {
-        toPage(page) {
-            console.log("toPage", page);
-            this.$router.push({ name: page });
-        },
-        register() {
-        },
+      toPage(page) {
+        this.$router.push({ name: page });
+      },
+      async register() {
+        let res = await signUp(this.username, this.email, this.pass)
+        if(!res.detail) {
+          this.$router.push({ name: "Home" });
+        }
+      },
     },
-    created() {
-      this.window.width = window.innerWidth;
-      this.window.height = window.innerHeight;
-    }
 }
 </script>
 <style scoped>
