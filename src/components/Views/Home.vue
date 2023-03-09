@@ -21,6 +21,7 @@
 import Btn from '../assets/Btn.vue';
 import { getBuyerSeances } from "@/api/buyer/func";
 import moment from "moment";
+import { setCookie } from '@/api/cookie/func';
   export default {
     name: "Home",
     components: { Btn },
@@ -31,7 +32,7 @@ import moment from "moment";
     methods: {
       async getSeances() {
         this.items = (await getBuyerSeances()).seanses
-        console.log('getSeances', data)
+        setCookie("userId", this.items[0].buyer.id)
       }
     },
     mounted() {

@@ -63,6 +63,11 @@ const routes = [
     component: Profile
   },
   {
+    path: '/model/:id',
+    name: 'Model',
+    component: Profile
+  },
+  {
     path: '/settings',
     name: 'Settings',
     component: Settings

@@ -2,39 +2,43 @@
   <ProfileModal :open="modalOpen" :profile="modalItem" @closeModal="closeModal"/>
   <div class="profile mobile">
     <div class="photo">
-      <img :src="require(`@/assets/profile/${profile.img}`)">
-      <Btn class="btn_component" :text="btnText" @click="openModal"/>
+      <span 
+          class="img profile"
+          :style="`background-image: url(${profile.profile_picture ? profile.profile_picture : require(`@/assets/profile/avatar_woman.svg`)});`"
+        />
+      <Btn class="btn_component" :text="'$' + this.profile.price + '/' + '8min'" @click="openModal"/>
     </div>
     <div class="info">
-      <span class="name">{{ profile.name }}</span>
-      <span class="tag">@{{ profile.tag }}</span>
+      <span class="name">{{ profile.username }}</span>
+      <span class="tag">@{{ profile.username }}</span>
       <div class="bio">
         <span class="title">Bio</span>
-        <span class="text">{{profile.bio}}</span>
+        <span class="text">{{profile.biography}}</span>
       </div>
     </div>
   </div>
 </template>
   
 <script>
+import { getModelSeance } from "@/api/model/func";
 import ProfileModal from "@/components/Modals/ProfileModal.vue";
 import Btn from "../assets/Btn.vue";
 export default {
   name: "Profile",
   components: { ProfileModal, Btn },
   data: () => ({
-    profile: {
-      img: "avatar_woman.svg",
-      name: "Savannah",
-      tag: "Savannah",
-      bio: "Welcome to my Profile, Book an exclusive video chat session with me, where we can talk about anything and get to know each other!",
-      time: "8mins",
-      price: 50,
-    },
+    profile: {},
     modalItem: null,
     modalOpen: null
   }), 
   methods: {
+    async getOpenModel() {
+      if(this.$route.params.id) {
+        this.profile = (await getModelSeance(this.$route.params.id)).user
+      } else {
+        console.log()
+      }
+    },
     closeModal() {
       this.modalOpen = false
     },
@@ -43,10 +47,10 @@ export default {
       this.modalItem = this.profile
     },
   },
+  mounted() {
+    this.getOpenModel()
+  },
   computed: {
-    btnText() {
-      return '$' + this.profile.price + '/' + this.profile.time
-    }
   }
 }
 </script>
@@ -103,7 +107,9 @@ export default {
 .profile .photo {
   position: relative;
 }
-.profile .photo img {
+.profile .photo .profile {
   width: 100%;
+  height: 381px;
+  border-radius: 10px;
 }
 </style>

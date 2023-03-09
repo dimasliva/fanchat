@@ -10,11 +10,12 @@ export async function requestUrl(url, method, body, repeatRequest) {
     },
     body
   })
-  console.log('middleware', resp)
   if(resp.status === 401) {
     await refreshToken()
     if(!repeatRequest) {
       requestUrl(url, method, body, true)
+    } else {
+      location.href = '/';
     }
   }
   let res = await resp.json()

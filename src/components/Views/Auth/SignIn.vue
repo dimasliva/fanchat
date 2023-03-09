@@ -18,25 +18,27 @@
 <script>
 import Policy from '@/components/Views/Auth/Components/Policy.vue';
 import { signIn } from '@/api/user/func';
+import { setCookie } from '@/api/cookie/func';
 
-  export default {
-    name: "SignIn",
-    data: () => ({
-      email: "",
-      password: "",
-    }),
-    methods: {
-        toPage(page) {
-            this.$router.push({ name: page });
-        },
-        async login(page) {
-          let res = await signIn(this.email, this.password)
-          if(!res.detail) {
-            this.$router.push({ name: page });
-          }
-        },
+export default {
+  name: "SignIn",
+  components: { Policy },
+  data: () => ({
+    email: "",
+    password: "",
+  }),
+  methods: {
+    toPage(page) {
+      this.$router.push({ name: page });
     },
-    components: { Policy }
+    async login(page) {
+      let res = await signIn(this.email, this.password)
+      if(!res.detail) {
+        setCookie('userId', 1)
+        this.$router.push({ name: page });
+      }
+    },
+  },
 }
 </script>
 <style scoped>

@@ -7,30 +7,77 @@
       </span>
     </div>
     <div class="fields">
-      <InputField :placeholder="'Name'" :bold="true" :value="profile.name"/>
-      <InputField :placeholder="'Tag'" :value="'@' + profile.tag"/>
-      <InputField :placeholder="'Bio'" :value="profile.bio"/>
+      <InputField 
+        @edit="e => chageField('name', e)"
+        :placeholder="'Name'" 
+        :bold="true" 
+        :value="user.first_name"
+      />
+      <InputField 
+        @edit="e => chageField('tag', e)"
+        :placeholder="'Tag'" 
+        :value="'@'+user.tag"
+      />
+      <InputField 
+        @edit="e => chageField('bio', e)"
+        :placeholder="'Bio'" 
+        :value="user.biography"
+      />
     </div>
-    <Btn :text="'Save'"/>
+    <Btn :text="'Save'" @click="userEdit"/>
   </div>
 </template>
   
 <script>
 import Btn from '../assets/Btn.vue';
 import InputField from '@/components/assets/InputField.vue';
+import { editUser, getUser } from '@/api/user/func';
+import { getCookie } from '@/api/cookie/func';
 
-  export default {
-    name: "ProfileEdit",
-    data: () => ({
-      profile: {
-        avatar: "avatar_woman.svg",
-        name: "Savannah",
-        tag: "Savannah",
-        bio: "",
+export default {
+  name: "ProfileEdit",
+  components: { Btn, InputField },
+  data() {
+    return ({
+      userId: getCookie('userId') ,
+      user: {
+        first_name: "",
+        tag: "",
+        biography: "",
+      },
+      userData: null,
+    })
+  },
+  methods: {
+    chageField(type, text) {
+      console.log(text)
+      if(type === 'name') {
+        this.user.first_name = text
+        this.user.tag = text
+      } else if(type === 'tag') {
+        console.log('tag', text.substr(text.lenght - 1))
+        this.user.tag = text.replace(/\@/, '')
+        this.user.first_name = text.replace(/\@/, '')
+      } else {
+        this.user.biography = text
       }
-    }),
-    methods: {},
-    components: { Btn, InputField }
+    },
+    async userEdit() {
+      this.userData.first_name = this.user.first_name
+      this.userData.biography = this.user.biography
+      await editUser(this.userId, this.userData)
+    },
+    async getUser() {
+      this.userData = (await getUser(this.userId)).user
+      this.user.first_name = this.userData.first_name
+      this.user.biography = this.userData.biography
+      console.log(this.user.first_name)
+      console.log(this.userData.first_name)
+    },
+  },
+  mounted() {
+    this.getUser()
+  },
 }
 </script>
 <style scoped>

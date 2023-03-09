@@ -5,6 +5,17 @@ export async function getUsers() {
   let res = await requestUrl("user/list/", "GET")
   return res
 }
+export async function getUser(id) {
+  let res = await requestUrl(`user/get/${id}`, "GET")
+  return res
+}
+export async function editUser(id, data) {
+  let res = await requestUrl(`user/${id}/`, "PUT", JSON.stringify({
+    data
+  }))
+  return res
+}
+// auth
 export async function signUp(username, email, password) {
   let res = await requestUrl("user/create/", "POST", JSON.stringify({
     "username": username,

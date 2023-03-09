@@ -38,7 +38,7 @@
   background-origin: border-box;
   background-clip: content-box, border-box;
   box-shadow: 1px 1000px 1px #fff inset;
-  padding: 8px 20px;
+  padding: 10px 10px;
   background-color: #fff;
   cursor: pointer;
   font-weight: 600;

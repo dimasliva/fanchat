@@ -1,51 +1,48 @@
 <template>
   <div class="items">
-    <div class="item" v-for="item in items" :key="item">
+    <div class="item" v-for="item in items" :key="item.id">
       <div class="info_container">
-        <img :src="require(`@/assets/profile/${item.img}`)">
+        <span 
+          class="img profile"
+          :style="`background-image: url(${item.model.profile_picture ? item.model.profile_picture : require('@/assets/profile/avatar_woman.svg')});`"
+        />
         <div class="info">
-          <span class="name">{{ item.name }}</span>
-          <span class="tag">@{{ item.tag }}</span>
+          <span class="name">{{ item.model.username }}</span>
+          <span class="tag">@{{ item.model.username }}</span>
           <span class="confirmed">Confirmed Booking!</span>
         </div>
       </div>
-      <div class="btn_call" v-if="item.call">
-        <Btn :call="item.call" :text="item.session" class="btn mobile" @click="toPage('Call')"/>
+      <div class="btn_call" v-if="item.booking_status">
+        <Btn :call="item.booking_status" class="btn mobile" @click="toPage('Call')"/>
         <span class="tap">Tap to Connect</span>
       </div>
-      <Btn v-else :call="item.call" :text="item.session" class="btn mobile"/>
+      <Btn v-else :text="moment(item.datetime).format('MMM DD @HHa')" class="btn mobile"/>
     </div>
   </div>
 </template>
   
-  <script>
+<script>
+import { getBuyerSeances } from '@/api/buyer/func';
+import moment from 'moment';
 import Btn from '../assets/Btn.vue';
 
 export default {
   name: "Message",
-  data: () => ({
-    items: [
-      {
-        img: "avatar_woman.svg",
-        name: "Savannah",
-        tag: "Savannah",
-        session: "Jan 20 @7pm",
-        call: true,
-      },
-      {
-        img: "avatar_woman_2.svg",
-        name: "Kylie",
-        tag: "Kylie",
-        session: "Jan 20 @9pm",
-        call: false,
-      },
-    ]
-  }),
   components: { Btn },
+  data: () => ({
+    items: [],
+    moment: moment,
+  }),
   methods: {
     toPage(page) {
       this.$router.push({name: page})
+    },
+    async getSeances() {
+      this.items = (await getBuyerSeances()).seanses
     }
+  },
+  mounted() {
+    this.getSeances()
   },
 }
 </script>
@@ -117,9 +114,10 @@ export default {
   align-items: center;
   width: 68%;
 }
-.info_container img {
+.info_container .profile {
+  width: 90px;
+  height: 90px;
   margin-right: 16px;
-  height: calc(var(--item-height) - 20px);
 }
 .btn {
   font-size: 12px;

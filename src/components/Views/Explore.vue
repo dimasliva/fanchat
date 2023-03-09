@@ -1,6 +1,6 @@
 <template>
   <div class="items mobile">
-    <div class="item" v-for="item in items" :key="item">
+    <div class="item" v-for="item in items" :key="item" @click="openModel(item.id)">
       <img :src="item.profile_picture ? item.profile_picture : require('@/assets/profile/avatar_woman.svg')">
       <div class="info">
         <span class="name">{{ item.username }}</span>
@@ -25,6 +25,9 @@
       async getSeances() {
         this.items = (await getAllModelsList()).seanses
         console.log('getUsers', this.items)
+      },
+      openModel(id) {
+        this.$router.push({name: "Model", params: {id}})
       }
     },
     mounted() {
@@ -90,8 +93,6 @@
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 20px;
-  }
-  .item img {
-    height: 100%;
+    cursor: pointer;
   }
 </style>

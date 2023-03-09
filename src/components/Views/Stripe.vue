@@ -1,7 +1,11 @@
 <template>
   <div class="stripe_container">
     <div class="stripe">
-      <input type="text" placeholder="Country">
+      <InputField 
+        :value="data" 
+        @edit="e => data = e"
+        :placeholder="'Country'"
+      />
       <div class="desc">
         <button class="btn connect" @click="toPage('Stripe')">Connect with Stripe</button>
         <div class="description">
@@ -10,37 +14,40 @@
         </div>
       </div>
     </div>
-    <button class="btn" @click="toPage('Stripe')">Next</button>
+    <button class="btn next" @click="toPage('Stripe')">Next</button>
   </div>
 </template>
   
 <script>
-  export default {
-    name: "Creator",
-    data: () => ({
+import InputField from '@/components/assets/InputField.vue';
 
-    }), 
-    methods: {
-      toPage(page) {
-        this.$router.push({name: page})
-      }
-    },
-  }
+export default {
+  name: "Creator",
+  components: { InputField },
+  data: () => ({
+    data: "",
+  }),
+  methods: {
+    toPage(page) {
+      this.$router.push({ name: page });
+    }
+  },
+}
 </script>
 <style scoped>
 .description {
-  padding-left: 7%;
   display: flex;
-  font-size: 98%;
+  font-size: 13px;
   flex-direction: column;
+  white-space: nowrap;
 }
 .desc {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   text-align: start;
   margin: auto;
-  width: 100%;
+  width: 295px;
   color: #000000;
 }
 .desc .btn {
@@ -48,6 +55,7 @@
   margin-bottom: 2%;
 }
 .stripe, .stripe button {
+  width: 100%;
   margin-top: 14%;
 }
 .stripe button {
@@ -65,32 +73,26 @@
 .btn.connect {
   background-color: transparent;
   color: #000000;
+  font-size: 24px;
   font-weight: 400;
   border: 1px solid #000000;
+  width: 100%;
+  height: 74px;
   border-radius: 8px;
 }
 .btn {
   color: #F5E0FF;
   background-color: #181817;
   padding: 5%;
-  font-size: 200%;
   font-weight: 900;
   border: 0px solid;
   border-radius: 8px;
   width: 80%;
 }
+.btn.next {
+  font-size: 30px;
+}
   .stripe input {
-    border: 0px;
-    border-bottom: 1px solid gray;
-    font-family: 'Petrona';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 230%;
-    line-height: 33px;
-    color: #636363;
-    padding-left: 10px;
-    outline: none;
     width: 100%;
-    background: transparent;
   }
 </style>
